@@ -2,11 +2,13 @@ from django.db import models
 from django.utils import timezone
 
 
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     course = models.CharField(max_length=20, default='CS ')
-    text = models.TextField()
+    text = models.TextField(max_length=1000)
+    code = models.TextField(max_length=1000, default='Fill the form with the code error if exits..')
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
@@ -18,3 +20,5 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+

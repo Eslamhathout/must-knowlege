@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+
+
+
+        <h1>{{ post.title }}</h1>
+        <h3>Post or Error Explanation:</h3>
+        <p>{{ post.text|linebreaksbr }}</p>
+        
+       	{% if post.code != 'Fill the form with the code error if exits..'%}
+       		<br>
+        	<h3>Error code:</h3>
+        	<code>{{ post.code|linebreaksbr }}</code>
+        {% endif %}
+        <br>
+        {% if post.published_date %}
+            <div class="date">
+            	<br>
+                <small> <p>published at {{ post.published_date }} by {{ post.author|linebreaksbr }} for course {{ post.course|linebreaksbr }} </p></small>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
